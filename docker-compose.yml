@@ -1,0 +1,18 @@
+version: '2'
+
+networks:
+  default:
+    external:
+      name: ${COMPOSE_PROJECT_NAME} 
+
+services:
+  mariadb:
+    image: mariadb/columnstore
+    container_name: mariadb
+    volumes:
+      - ./data/:/usr/local/mariadb/columnstore/db
+    environment:
+#      - CS_POSTCFG_INPUT=
+       - CS_DATABASE=db
+    ports:
+      - ${PORT}:3306
