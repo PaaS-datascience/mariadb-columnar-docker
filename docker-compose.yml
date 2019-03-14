@@ -10,7 +10,7 @@ services:
     image: mariadb/columnstore
     container_name: mariadb
     volumes:
-      - ./data/:/usr/local/mariadb/columnstore/db
+      - ./data/:/usr/local/mariadb/columnstore/mysql/db
     environment:
        - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
        - MARIADB_DATABASE=${MARIADB_DATABASE}
