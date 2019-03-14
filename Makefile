@@ -6,6 +6,7 @@ export MARIADB_ROOT_PASSWORD=*PLZ_ch4ng3_M3!
 export MARIADB_DATABASE=${COMPOSE_PROJECT_NAME}
 export MARIADB_USER=${COMPOSE_PROJECT_NAME}
 export MARIADB_PASSWORD=*ch4ng3_M3!
+export MARIADB_DIALECT=ANSI_QUOTES
 
 dummy               := $(shell touch artifacts)
 include ./artifacts
@@ -41,6 +42,10 @@ clean: down
 
 build:
 	docker build --build-arg proxy=${http_proxy} -t vertica .
+
+dialect:
+	@echo change dialect to ${MARIADB_DIALECT}
+	@docker exec -it mariadb mysql --user=root --password=${MARIADB_ROOT_PASSWORD} ${MARIADB_DATABASE} -e 'SET GLOBAL sql_mode = '${MARIADB_DIALECT}';'
 
 up: network
 	docker-compose up -d
