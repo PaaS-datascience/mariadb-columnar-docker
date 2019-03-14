@@ -12,7 +12,9 @@ services:
     volumes:
       - ./data/:/usr/local/mariadb/columnstore/db
     environment:
-#      - CS_POSTCFG_INPUT=
-       - CS_DATABASE=db
+       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+       - MARIADB_DATABASE=${MARIADB_DATABASE}
+       - MARIADB_USER=${MARIADB_USER}
+       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
     ports:
       - ${PORT}:3306

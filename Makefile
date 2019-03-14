@@ -2,6 +2,10 @@
 
 export COMPOSE_PROJECT_NAME=latelier
 export PORT=3306
+export MARIADB_ROOT_PASSWORD=*PLZ_ch4ng3_M3!
+export MARIADB_DATABASE=${COMPOSE_PROJECT_NAME}
+export MARIADB_USER=${COMPOSE_PROJECT_NAME}
+export MARIADB_PASSWORD=*ch4ng3_M3!
 
 dummy               := $(shell touch artifacts)
 include ./artifacts
